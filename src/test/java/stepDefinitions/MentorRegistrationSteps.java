@@ -2,6 +2,7 @@ package stepDefinitions;
 
 
 import Hooks.BasePage;
+import Hooks.BrowserDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,36 +15,33 @@ import pageObjects.MentorRegistrationPage;
 
 
 
-public class MentorRegistrationSteps {
-    public WebDriver driver;
-    public MentorRegistrationPage mrp;
+public class MentorRegistrationSteps extends BrowserDriver {
+  //public WebDriver driver;
+    //public MentorRegistrationPage mrp;
     //public pageObjects.RegistrationPage RP;
 
 
-    public MentorRegistrationSteps() {
+//    public MentorRegistrationSteps() {
+//
+//        mrp = new MentorRegistrationPage(driver);
 
 
-//        driver= new ChromeDriver();
-//     //WebDriverManager.firefoxdriver().setup();
-//        driver= new FirefoxDriver();
-//        driver.manage().window().maximize();
-        //
-        // RP= new pageObjects.RegistrationPage(driver);
-        //mrp = new MentorRegistrationPage(mrp.driver);
-        mrp = new MentorRegistrationPage(driver);
+//    }
+ MentorRegistrationPage mrp = new MentorRegistrationPage(driver);
+
+    @Given("I navigate to the website")
+    public void iNavigateToTheWebsite() {
+        mrp.Navigate("https://mentorskid.com");
+       // BasePage.driver.navigate().to("https://mentorskid.com");
     }
 
-
-//    @Given("^I navigate to the website$")
-//    public void iNavigateToTheWebsite() {
-//        driver.get("https://mentorskid.com");
-
-        //mrp.Navigate();
-
-      //driver.navigate().to("https://mentorskid.com");
-       // mrp.openUrl();
-
-    //}
+//    @Given("I navigate to the website {string}")
+//    public void iNavigateToTheWebsite(String url) {
+//
+//       // BasePage.driver.navigate().to("https://mentorskid.com");
+//
+//
+//    }
 
     @When("I click sign up button")
     public void iClickJoinAsAMentor() {
@@ -80,10 +78,10 @@ public class MentorRegistrationSteps {
         mrp.ClickMentorRadioButton();
     }
 
-    @And("I click mentee radio button")
-    public void iClickMenteeRadioButton() {
-        mrp.ClickMenteeRadioButton();
-    }
+//    @And("I click mentee radio button")
+//    public void iClickMenteeRadioButton() {
+//        mrp.ClickMenteeRadioButton();
+//    }
 
 
     @And("I click terms and condition")
@@ -99,14 +97,23 @@ public class MentorRegistrationSteps {
     @Then("my profile page displayed")
     public void enrolledCoursesDisplayed() {
 
-      //  Assert.assertTrue(mrp.VerifyMyProfileText());
+        Assert.assertTrue(mrp.VerifyMyProfileText());
+
+    }
+
+    @Then("the text {string}is displayed")
+    public void theTextIsDisplayed( String  text) {
+        Assert.assertTrue(mrp.PopUpMessageDisplayed(),text);
 
 
     }
 
-    @Given("I navigate to the website {string}")
-    public void iNavigateToTheWebsite(String url) {
-        //driver.navigate().to(url);
-        mrp.Navigate(url);
+    @Then("the text {string} is displayed")
+    public void theTextDisplayed(String invalidtext) {
+        Assert.assertTrue(mrp.AddValidEmaillPopUpDisplayed(), invalidtext);
+
     }
+
+
+
 }
