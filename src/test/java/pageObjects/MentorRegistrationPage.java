@@ -1,10 +1,11 @@
 package pageObjects;
 
 
+import Hooks.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ElementUtil;
@@ -13,29 +14,27 @@ import java.time.Duration;
 import java.util.List;
 
 
-public class MentorRegistrationPage extends BasePage{
+public class MentorRegistrationPage{
 
     public WebDriver driver;
+   // public BasePage basePage;
+   public ElementUtil eleUtil;
 
-
-
-    //public BasePage bp;
-    public ElementUtil eleUtil;
-    //public BasePage bp;
-
-        //this.driver=driver;
-
-//        //bp= new BasePage(driver);
-         PageFactory.initElements( driver, this);
-        this.driver = driver;
     public MentorRegistrationPage(WebDriver driver) {
-    //super(driver);
-    this.driver = driver;
+
+   this.driver = driver;
+
+
+   // basePage = new BasePage();
+    eleUtil = new ElementUtil(driver);
+
+
+
   }
 
 
     By signUpButton = By.xpath("//a[text()='Signup']");
-    By menteebutton= By.xpath("//a[@class='tu-primbtn tu-primbtn-gradient']");
+   // By menteebutton= By.xpath("//a[@class='tu-primbtn tu-primbtn-gradient']");
     By welcomePageDisplayed = By.xpath("//h2[text()='Welcome!']");
     By firstName = By.xpath("//input[@type='text'][1]");
     By lastName = By.xpath("//input[@name='registration[lname]']");
@@ -49,24 +48,24 @@ public class MentorRegistrationPage extends BasePage{
     By popUpMessageDisplayed = By.id("tuturn-modal-popup");
     By addValidEmailPopUpDisplayed = By.xpath("//div[@class='modal fade tuturn-profilepopup tu-uploadprofile tuturn-popup']");
     //By mentwwCheckbox = //label[@for='user_type_student']
-    By menteecheckbox = By.xpath("//div[@class='tu-check tu-radiosm']");
+    //By menteecheckbox = By.xpath("//div[@class='tu-check tu-radiosm']");
 
 
 
 
     public void Navigate(String url){
-        driver.navigate().to(url);
+       driver.navigate().to(url);
     }
 
     public void ClickSignUpButton() {
-        //driver.findElement(signUpButton).click();
+       //driver.findElement(signUpButton).click();
         eleUtil.doClick(signUpButton);
     }
 
-    public void ClickMenteeButton()
-    {
-        eleUtil.doClick(menteebutton);
-    }
+//   public void ClickMenteeButton()
+//    {
+//        eleUtil.doClick(menteebutton);
+//    }
 
     public boolean VerifyWelcomePageDisplayed() {
         //return driver.findElement(welcomePageDisplayed).isDisplayed();
@@ -111,19 +110,19 @@ public class MentorRegistrationPage extends BasePage{
         //} for each loop
 
     }
-    public void ClickMenteeRadioButton() {
-        List<WebElement> list= eleUtil.getElements(menteecheckbox);
-        for(WebElement e: list)
-        {
-            String text= e.getText();
-            if(text.contains("Mentee"))
-            {
-                e.click();
-            }
-
-
-        }
-    }
+//    public void ClickMenteeRadioButton() {
+//        List<WebElement> list= eleUtil.getElements(menteecheckbox);
+//        for(WebElement e: list)
+//        {
+//            String text= e.getText();
+//            if(text.contains("Mentee"))
+//            {
+//                e.click();
+//            }
+//
+//
+//        }
+//    }
     public void ClickTermsAndConditions() {
         //driver.findElement(termsAndConditions).click();
         eleUtil.doClick(termsAndConditions);
@@ -133,10 +132,10 @@ public class MentorRegistrationPage extends BasePage{
         eleUtil.doClick(joinNow);
     }
 
-//    public boolean VerifyMyProfileText() {
-//        WebDriverWait wait = new WebDriverWait(drive, Duration.ofSeconds(20)); //explicit wait
-//        return wait.until(ExpectedConditions.presenceOfElementLocated(myProfileTextDisplayed)).isDisplayed();
-//    }
+    public boolean VerifyMyProfileText() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); //explicit wait
+        return wait.until(ExpectedConditions.presenceOfElementLocated(myProfileTextDisplayed)).isDisplayed();
+    }
 
     public boolean PopUpMessageDisplayed() {
          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));

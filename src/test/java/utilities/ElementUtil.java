@@ -1,5 +1,6 @@
 package utilities;
 
+import Hooks.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -11,20 +12,31 @@ import java.util.NoSuchElementException;
 
 public class ElementUtil {
 
-    private WebDriver driver;
+   public WebDriver driver;
+
+
+
+
+   //public BasePage basePage;
     //  private JavaScriptUtil jsUtil;
 
     public ElementUtil(WebDriver driver) {
         this.driver = driver;
+
         // jsUtil = new JavaScriptUtil(driver);
+       // basePage = new BasePage();
+
+
     }
 
     public WebElement getElement(By locator) {
-        WebElement element = driver.findElement(locator);
-//        if (Boolean.parseBoolean(Driverfactory.highlight)) {
+        WebElement element;
+          element = driver.findElement(locator);
+          //        if (Boolean.parseBoolean(Driverfactory.highlight)) {
 //            jsUtil.flash(element);
         //     }
         return element;
+
     }
 
     public WebElement getElement(By locator, int timeOut) {
