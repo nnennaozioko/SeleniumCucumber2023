@@ -1,6 +1,6 @@
 package utilities;
 
-import Hooks.BasePage;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -52,6 +52,7 @@ public class ElementUtil {
         element.clear();
         element.sendKeys(value);
     }
+
 
     public void doActionsSendKeys(By locator, String value) {
         Actions act = new Actions(driver);
