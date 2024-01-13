@@ -15,9 +15,9 @@ import pageObjects.MentorRegistrationPage;
 
 
 
-public class MentorRegistrationSteps extends BrowserDriver {
+public class MentorRegistrationSteps  {
 
- MentorRegistrationPage mrp = new MentorRegistrationPage(driver);
+ MentorRegistrationPage mrp = new MentorRegistrationPage(BasePage.driver);
 
     @Given("I navigate to the website")
     public void iNavigateToTheWebsite() {
@@ -99,5 +99,8 @@ public class MentorRegistrationSteps extends BrowserDriver {
     }
 
 
-
+    @Then("the text Password must be  characters is displayed")
+    public void theTextPasswordMustBeCharactersIsDisplayed() {
+        Assert.assertTrue(mrp.PopUpMessageDisplayed());
+    }
 }

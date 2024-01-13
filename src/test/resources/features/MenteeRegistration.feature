@@ -7,7 +7,7 @@ Feature: I want to register to become a mentor.
     When I click start as a mentee
     Then welcome page displayed
 
-  @test
+
   Scenario Outline: valid mentor registration
     When I enter first name "<firstName>"
     And I enter last name "<lastName>"

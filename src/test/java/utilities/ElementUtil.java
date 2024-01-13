@@ -1,6 +1,7 @@
 package utilities;
 
 
+import Hooks.BrowserDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -18,12 +19,12 @@ public class ElementUtil {
 
 
    //public BasePage basePage;
-    //  private JavaScriptUtil jsUtil;
+      private JavaScriptUtil jsUtil;
 
     public ElementUtil(WebDriver driver) {
         this.driver = driver;
 
-        // jsUtil = new JavaScriptUtil(driver);
+         jsUtil = new JavaScriptUtil(driver);
        // basePage = new BasePage();
 
 
@@ -32,9 +33,9 @@ public class ElementUtil {
     public WebElement getElement(By locator) {
         WebElement element;
           element = driver.findElement(locator);
-          //        if (Boolean.parseBoolean(Driverfactory.highlight)) {
-//            jsUtil.flash(element);
-        //     }
+                 if (Boolean.parseBoolean(BrowserDriver.highlight)) {
+            jsUtil.flash(element);
+            }
         return element;
 
     }
@@ -120,7 +121,12 @@ public class ElementUtil {
         Select select = new Select(getElement(locator));
         select.selectByVisibleText(text);
     }
-
+public void doSelectDropDownByVisibleTexts(By locator, String text1, String text2)
+{
+    Select select= new Select(getElement(locator));
+    select.selectByVisibleText(text1);
+    select.selectByVisibleText(text2);
+}
     public List<WebElement> getDropDownOptionsList(By locator) {
         Select select = new Select(getElement(locator));
         return select.getOptions();

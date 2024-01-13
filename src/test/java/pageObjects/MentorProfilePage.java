@@ -89,7 +89,6 @@ public class MentorProfilePage {
     {  String csspath= "div.tu-btnarea-two a";
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1000)", "");
-       // eleUtil.doActionsCick(savebutton);
         ((JavascriptExecutor)driver).executeScript("document.querySelector(arguments[0],':before').click();",csspath);
 
 
