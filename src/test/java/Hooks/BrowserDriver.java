@@ -19,11 +19,12 @@ public class BrowserDriver {
     public Properties prop;
     public OptionsManager op;
     public static String highlight;
+    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
     public WebDriver BrowserSetup(Properties prop) {
 
         highlight= prop.getProperty("highlight");
-        String Browser= prop.getProperty("browser");
+        String Browser= prop.getProperty("browser");//chrome
         op= new OptionsManager(prop);
         if (Browser.equalsIgnoreCase("Firefox")) {
             WebDriverManager.firefoxdriver().setup();
@@ -31,12 +32,18 @@ public class BrowserDriver {
             driver.manage().window().maximize();
         } else if (Browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(op.getChromeOptions());
-            driver.manage().window().maximize();
+            tlDriver.set(new ChromeDriver(op.getChromeOptions()));
+         //   driver = new ChromeDriver(op.getChromeOptions());//open chrome browser
+
 
         }
-return driver;
+        getDriver().manage().deleteAllCookies();
+        getDriver().manage().window().maximize();
+        return getDriver();
 
+    }
+    public static synchronized WebDriver getDriver() {
+        return tlDriver.get();
     }
     public Properties initProperties()
     {  prop= new Properties();

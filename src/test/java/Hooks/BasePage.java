@@ -29,7 +29,7 @@ public BrowserDriver BDriver;
 @Before
 public void setup(){
 
-   BDriver = new BrowserDriver();
+   BDriver = new BrowserDriver();// it will create object for BrowserDriver
  prop=  BDriver.initProperties();
   driver= BDriver.BrowserSetup(prop);
 

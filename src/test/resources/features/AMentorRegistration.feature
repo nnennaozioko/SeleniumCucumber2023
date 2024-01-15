@@ -20,7 +20,7 @@ Feature: I want to register to become a mentor.
 
     Examples:
       |firstName|lastName|emailAddress|password|
-      |  Bharadwaj|  Eddanapudi     |  ranthi@gmail.com          |Jank123@    |
+      |  Bharadwaj|  Eddanapudi     |  ramithi@gmail.com          |Jank123@    |
     #|  Eusy       |   James     |    eusy@yahoo.com        |   Eusy123$     |
 
 @Smoke

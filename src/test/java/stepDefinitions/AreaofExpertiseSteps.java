@@ -1,13 +1,14 @@
 package stepDefinitions;
 
+import Hooks.BasePage;
 import Hooks.BrowserDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 import pageObjects.AreaOfExpertisePage;
 
-public class AreaofExpertiseSteps extends BrowserDriver {
-    AreaOfExpertisePage areaOfExpertisePage= new AreaOfExpertisePage(driver);
+public class AreaofExpertiseSteps {
+    AreaOfExpertisePage areaOfExpertisePage= new AreaOfExpertisePage(BrowserDriver.getDriver());
     @And("I click on AreaofExpertise link")
     public void iClickOnAreaofExpertiseLink() {
         areaOfExpertisePage.clickLinkOnAreaOfExpertise();

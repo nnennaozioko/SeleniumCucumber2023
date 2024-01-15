@@ -6,7 +6,7 @@ Feature: MyCalendar details
   @Smoke
   Scenario Outline: MyCalendarDetails Page
 
-    And I enter the Username "sranthi@gmail.com "
+    And I enter the Username "panthi@gmail.com"
     And I enter UserPassword " Jank123@"
     And   I click on Submit button
     Then  my profile page displayed

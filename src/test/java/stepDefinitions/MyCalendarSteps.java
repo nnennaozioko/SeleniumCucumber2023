@@ -1,13 +1,14 @@
 package stepDefinitions;
 
+import Hooks.BasePage;
 import Hooks.BrowserDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 import pageObjects.MyCalendarPage;
 
-public class MyCalendarSteps extends BrowserDriver {
-    MyCalendarPage myCalendarPage= new MyCalendarPage(driver);
+public class MyCalendarSteps  {
+    MyCalendarPage myCalendarPage= new MyCalendarPage(BrowserDriver.getDriver());
     @And("I click on MyCalendar link")
     public void i_click_on_my_calendar_link() {
 myCalendarPage.doClickonMyCalendar();

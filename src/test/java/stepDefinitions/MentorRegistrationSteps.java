@@ -15,9 +15,9 @@ import pageObjects.MentorRegistrationPage;
 
 
 
-public class MentorRegistrationSteps  {
+public class MentorRegistrationSteps {
 
- MentorRegistrationPage mrp = new MentorRegistrationPage(BasePage.driver);
+ MentorRegistrationPage mrp = new MentorRegistrationPage(BrowserDriver.getDriver());
 
     @Given("I navigate to the website")
     public void iNavigateToTheWebsite() {

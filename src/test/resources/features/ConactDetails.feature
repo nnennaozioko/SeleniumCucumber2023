@@ -3,12 +3,15 @@ Feature: ContactDetailsPage
   Background:
     Given I navigate to the website
     When  I click on Login button
+    Given User is already logged into application
+    |Username|Password|
+    |panthi@gmail.com|Jank123@|
 
   Scenario Outline: Contact details Page
 
-    When  I enter the Username "sranthi@gmail.com  "
-    And I enter UserPassword "Jank123@ "
-    And   I click on Submit button
+    #When  I enter the Username "sranthi@gmail.com  "
+    #And I enter UserPassword "Jank123@ "
+    #And   I click on Submit button
     Then  my profile page displayed
     And   I click on Contact details link
     And   I enter "<Phonenumber>"

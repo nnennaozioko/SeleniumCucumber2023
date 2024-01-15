@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/resources/features"},
-   glue = {"stepDefinitions"},
+   glue = {"Hooks","stepDefinitions"},
         plugin = {"pretty", "html:target/cucumber-reports"},
         tags="@Smoke",
         dryRun=false
@@ -17,9 +17,9 @@ import org.testng.annotations.Test;
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-//@Override
-//@DataProvider(parallel = true)
-//public Object[][] scenarios() {
-//    return super.scenarios();
-//}
+@Override
+@DataProvider(parallel = true)
+public Object[][] scenarios() {
+    return super.scenarios();
+}
 }

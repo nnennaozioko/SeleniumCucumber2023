@@ -8,9 +8,9 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.LoginPage;
 
-public class LoginStepDefinition extends BrowserDriver{
+public class LoginStepDefinition {
 
-    LoginPage loginPage= new LoginPage(driver);
+    LoginPage loginPage= new LoginPage(BrowserDriver.getDriver());
     @When("I click on Login button")
     public void iClickOnLoginButton() {
 

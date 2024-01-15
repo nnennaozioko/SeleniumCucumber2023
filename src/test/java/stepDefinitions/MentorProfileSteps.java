@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Hooks.BasePage;
 import Hooks.BrowserDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -7,9 +8,9 @@ import io.cucumber.java.en.When;
 import pageObjects.MentorProfilePage;
 import pageObjects.MentorRegistrationPage;
 
-public class MentorProfileSteps extends BrowserDriver {
+public class MentorProfileSteps  {
 
-MentorProfilePage mentorProfilePage= new MentorProfilePage(driver);
+MentorProfilePage mentorProfilePage= new MentorProfilePage(BrowserDriver.getDriver());
 
     @When("I select gender male")
     public void iSelectGenderMale() {

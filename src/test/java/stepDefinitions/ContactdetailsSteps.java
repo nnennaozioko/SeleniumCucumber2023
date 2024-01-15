@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Hooks.BasePage;
 import Hooks.BrowserDriver;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -11,9 +12,11 @@ import pageObjects.LoginPage;
 import java.util.List;
 import java.util.Map;
 
-public class ContactdetailsSteps extends BrowserDriver {
+public class ContactdetailsSteps  {
 
-    public ContactDetailsPage contactDetailsPage= new ContactDetailsPage(driver);
+    public ContactDetailsPage contactDetailsPage;
+            //= new ContactDetailsPage(BrowserDriver.getDriver());
+    public LoginPage loginPage= new LoginPage(BrowserDriver.getDriver());
 //    @Given("User has already logged into application")
 //    public void userHasAlreadyLoggedIntoApplication(DataTable credTable) {
 //        List<Map<String, String>> credList = credTable.asMaps();
@@ -36,6 +39,15 @@ public class ContactdetailsSteps extends BrowserDriver {
 
     @Then("Error Message should be displayed")
     public void errorMessageShouldBeDisplayed() {
+
+    }
+
+    @Given("User is already logged into application")
+    public void userIsAlreadyLoggedIntoApplication(DataTable credTable) {
+        List<Map<String,String>> credlist= credTable.asMaps();
+       String username=  credlist.get(0).get("Username");
+       String password=credlist.get(0).get("Password");
+        contactDetailsPage= loginPage.doLogin(username,password);
 
     }
 }

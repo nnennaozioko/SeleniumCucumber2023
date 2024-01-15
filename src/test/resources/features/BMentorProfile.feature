@@ -30,4 +30,4 @@ Feature: MentorProfile
     Then a  successful message displayed
     Examples:
       |firstName|lastName      |emailAddress              |password        | HourRate|
-      |  Bharadwaj   | Eddanapudi    |   sranthi@gmail.com          |    Jank123@     |500      |
+      |  Bharadwaj   | Eddanapudi    |   ianthi@gmail.com          |    Jank123@     |500      |
