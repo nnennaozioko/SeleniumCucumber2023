@@ -6,7 +6,7 @@ Feature: AreaofExpertise details
 @Smoke
   Scenario Outline: AreaofExpertisedetails Page
 
-   And I enter the Username "izanthi@gmail.com  "
+   And I enter the Username "ramithi@gmail.com  "
     And I enter UserPassword "Jank123@ "
     And   I click on Submit button
     Then  my profile page displayed
