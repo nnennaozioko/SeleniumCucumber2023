@@ -6,9 +6,9 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.MenteeRegistrationPage;
 
-public class MenteeRegistrationStep extends BrowserDriver {
+public class MenteeRegistrationStep  {
 
-    MenteeRegistrationPage menteeRegistrationPage = new MenteeRegistrationPage(driver);
+    MenteeRegistrationPage menteeRegistrationPage = new MenteeRegistrationPage(BrowserDriver.getDriver());
 
     @When("I click start as a mentee")
     public void iClickStartAsAMentee() {

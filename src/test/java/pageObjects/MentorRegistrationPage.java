@@ -49,6 +49,7 @@ public class MentorRegistrationPage{
     By addValidEmailPopUpDisplayed = By.xpath("//div[@class='modal fade tuturn-profilepopup tu-uploadprofile tuturn-popup']");
     //By mentwwCheckbox = //label[@for='user_type_student']
     //By menteecheckbox = By.xpath("//div[@class='tu-check tu-radiosm']");
+    By Invalidmessage= By.xpath("//span[text()='Oops!']");
 
 
 
@@ -58,8 +59,11 @@ public class MentorRegistrationPage{
     }
 
     public void ClickSignUpButton() {
-       //driver.findElement(signUpButton).click();
-        eleUtil.doClick(signUpButton);
+        WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(50));
+        wait.until(ExpectedConditions.elementToBeClickable(signUpButton));
+       driver.findElement(signUpButton).click();
+      //  eleUtil.waitForElementToBeClickable(30,signUpButton);
+       // eleUtil.doClick(signUpButton);
     }
 
 //   public void ClickMenteeButton()
@@ -138,9 +142,22 @@ public class MentorRegistrationPage{
     }
 
     public boolean PopUpMessageDisplayed() {
-         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        driver.findElement(popUpMessageDisplayed);
-        return true;
+//         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+////        driver.findElement(popUpMessageDisplayed);
+////        return true;
+//      return  wait.until(ExpectedConditions.presenceOfElementLocated(popUpMessageDisplayed)).isDisplayed();
+//        WebElement ele=  eleUtil.waitForElementVisible(popUpMessageDisplayed,50);
+//        return ele.isDisplayed();
+        WebDriverWait wait=  new WebDriverWait(driver, Duration.ofSeconds(40));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(Invalidmessage));
+        String text=driver.findElement(Invalidmessage).getText();
+        if(text.equalsIgnoreCase("Oops!"))
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
 
     }
 

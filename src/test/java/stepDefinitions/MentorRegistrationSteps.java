@@ -15,33 +15,17 @@ import pageObjects.MentorRegistrationPage;
 
 
 
-public class MentorRegistrationSteps extends BrowserDriver {
-  //public WebDriver driver;
-    //public MentorRegistrationPage mrp;
-    //public pageObjects.RegistrationPage RP;
+public class MentorRegistrationSteps {
 
-
-//    public MentorRegistrationSteps() {
-//
-//        mrp = new MentorRegistrationPage(driver);
-
-
-//    }
- MentorRegistrationPage mrp = new MentorRegistrationPage(driver);
+ MentorRegistrationPage mrp = new MentorRegistrationPage(BrowserDriver.getDriver());
 
     @Given("I navigate to the website")
     public void iNavigateToTheWebsite() {
         mrp.Navigate("https://mentorskid.com");
-       // BasePage.driver.navigate().to("https://mentorskid.com");
+
     }
 
-//    @Given("I navigate to the website {string}")
-//    public void iNavigateToTheWebsite(String url) {
-//
-//       // BasePage.driver.navigate().to("https://mentorskid.com");
-//
-//
-//    }
+
 
     @When("I click sign up button")
     public void iClickJoinAsAMentor() {
@@ -115,5 +99,8 @@ public class MentorRegistrationSteps extends BrowserDriver {
     }
 
 
-
+    @Then("the text Password must be  characters is displayed")
+    public void theTextPasswordMustBeCharactersIsDisplayed() {
+        Assert.assertTrue(mrp.PopUpMessageDisplayed());
+    }
 }
