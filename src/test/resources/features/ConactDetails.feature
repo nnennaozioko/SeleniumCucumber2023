@@ -5,7 +5,7 @@ Feature: ContactDetailsPage
     When  I click on Login button
     Given User is already logged into application
     |Username|Password|
-    |panthi@gmail.com|Jank123@|
+    |ramithi@gmail.com   |Jank123@|
 
   Scenario Outline: Contact details Page
 
